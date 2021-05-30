@@ -21,6 +21,7 @@ async function handleRequest(request) {
       `<link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.0.4/tailwind.min.css" rel="stylesheet">
       <div class="px-3 py-3">
         <h2>Hello, World!</h2>
+        <p>Time of the request: ${ new Date() }</p>
         <pre>${ JSON.stringify(headersOut, null, ' ') }</pre>
       </div>`,
       {
