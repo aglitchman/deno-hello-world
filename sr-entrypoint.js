@@ -12,11 +12,16 @@ async function handleRequest(request) {
   const { pathname, searchParams } = new URL(request.url);
 
   if (pathname == "/") {
+    let headersOut = {};
+    for (let key of request.headers.keys()) {
+      headersOut[key] = request.headers.get(key);
+    }
+    
     return new Response(
       `<link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.0.4/tailwind.min.css" rel="stylesheet">
       <div class="px-3 py-3">
         <h2>Hello, World!</h2>
-        <pre>${ JSON.stringify(request.headers, null, ' ') }</pre>
+        <pre>${ JSON.stringify(headersOut, null, ' ') }</pre>
       </div>`,
       {
         headers: {
